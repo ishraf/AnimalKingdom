@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
+// A class to simulate the behavior of animal type tiger
 public class Tiger extends Critter {
     private int stepCounter, stepChangeColor;
     private Color color;
@@ -13,6 +14,11 @@ public class Tiger extends Critter {
         this.name = "TGR";
     }
 
+    // Increase field stepCounter on every movement
+    // If frontThreat() is true, return Action.INFECT
+    // Else if getFront() == WALL or getRight() == WALL, return Action.LEFT
+    // Else if getFront() == SAME, return Action.RIGHT
+    // Else return Action.HOP
     public Action getMove(CritterInfo info) {
         this.stepCounter++;
 
@@ -26,6 +32,7 @@ public class Tiger extends Critter {
             return Action.HOP;
     }
 
+    // Get random color between RED, GREEN or BLUE
     private Color randomColor(){
         Color[] list = {Color.RED, Color.GREEN, Color.BLUE};
         int max = list.length;
@@ -33,6 +40,8 @@ public class Tiger extends Critter {
         return list[random];
     }
 
+    // If stepCounter >= stepChangeColor, reset color to new random color
+    // and reset stepCounter to 0. Return the new color
     public Color getColor() {
         if(this.stepCounter >= this.stepChangeColor){
             this.color = this.randomColor();
@@ -42,6 +51,7 @@ public class Tiger extends Critter {
         return this.color;
     }
 
+    // Return this animal name
     public String toString() {
         return this.name;
     }

@@ -1,5 +1,6 @@
 import java.awt.*;
 
+// A class to simulate the behavior of animal type ninja cat
 public class NinjaCat extends Critter {
     private Color color;
     private String name;
@@ -9,6 +10,10 @@ public class NinjaCat extends Critter {
         this.name = "X";
     }
 
+    // If frontThreat() is true, return Action.INFECT
+    // Else if getFront() returns SAME, set color to black and return Action.RIGHT
+    // Else if getFront() returns WALL, set color to magenta and returns Action.LEFT
+    // Else return Action.HOP
     public Action getMove(CritterInfo info) {
         if (info.frontThreat()) {
             return Action.INFECT;
@@ -23,10 +28,12 @@ public class NinjaCat extends Critter {
         }
     }
 
+    // Return this animal color
     public Color getColor() {
         return this.color;
     }
 
+    // Return this animal name
     public String toString() {
         return this.name;
     }
